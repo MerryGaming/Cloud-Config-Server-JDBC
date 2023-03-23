@@ -1,0 +1,18 @@
+spring:
+  liquibase:
+    change-log: classpath:/migration/master-changelog.xml
+  datasource:
+    url: jdbc:mysql://localhost:3306/config
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: linh2002
+  profiles:
+    active: jdbc
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: SELECT key, value FROM properties WHERE application=? AND profile=?
+          order: 0
+server:
+  port: 8088
