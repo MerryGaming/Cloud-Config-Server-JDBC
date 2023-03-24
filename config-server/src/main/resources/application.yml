@@ -12,7 +12,9 @@ spring:
     config:
       server:
         jdbc:
-          sql: SELECT key, value FROM properties WHERE application=? AND profile=?
+          sql: SELECT key, value FROM properties WHERE application=? AND profile=? AND label=?
           order: 0
+  jpa:
+    show-sql: true
 server:
   port: 8088

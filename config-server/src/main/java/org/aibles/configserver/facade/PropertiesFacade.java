@@ -6,5 +6,5 @@ import org.aibles.configserver.entity.Properties;
 
 public interface PropertiesFacade {
   Properties create(PropertiesRequest request);
-  PropertiesResponse getApplicationConfig(String application, String profile);
+  PropertiesResponse getApplicationConfig(String application, String profile, String label);
 }

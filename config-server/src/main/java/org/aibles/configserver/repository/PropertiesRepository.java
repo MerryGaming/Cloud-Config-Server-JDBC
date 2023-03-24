@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PropertiesRepository extends JpaRepository<Properties, Long> {
 
-  List<Properties> findByApplicationAndProfile(String application, String profile);
-  List<Properties> findByValue(String application, String profil);
+  List<Properties> findByApplicationAndProfileAndLabel(String application, String profile, String label);
 }

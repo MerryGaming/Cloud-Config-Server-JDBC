@@ -9,19 +9,22 @@
 
   <changeSet id="20230320-0932-add-table-properties" author="YaLynk">
     <createTable tableName="properties">
-      <column name="id" type="bigint">
+      <column name="id" type="varchar(255)">
         <constraints primaryKey="true" primaryKeyName="pk_id_properties" unique="true"/>
       </column>
       <column name="application" type="varchar(255)">
         <constraints nullable="true"/>
       </column>
-      <column name="profile" type="varchar(255)">
+      <column name="profile_client" type="varchar(255)">
         <constraints nullable="true"/>
       </column>
-      <column name="key" type="varchar(255)">
+      <column name="label" type="varchar(255)">
         <constraints nullable="true"/>
       </column>
-      <column name="value" type="varchar(255)">
+      <column name="prop_key" type="varchar(255)">
+        <constraints nullable="true"/>
+      </column>
+      <column name="value_config" type="varchar(255)">
         <constraints nullable="true"/>
       </column>
     </createTable>

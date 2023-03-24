@@ -8,6 +8,6 @@ public interface PropertiesService {
 
   Properties create(PropertiesRequest request);
 
-  List<Properties> configInformation(String application, String profile);
-  List<Properties> config(String application, String profile);
+  List<Properties> configInformation(String application, String profile, String label);
+
 }

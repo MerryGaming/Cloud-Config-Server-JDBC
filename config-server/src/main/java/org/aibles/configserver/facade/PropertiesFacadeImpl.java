@@ -19,34 +19,59 @@ public class PropertiesFacadeImpl implements PropertiesFacade{
     this.service = service;
   }
 
+  /**
+   * Create client information
+   * @param request - client information
+   * @return - client information
+   */
   @Override
   public Properties create(PropertiesRequest request) {
-    log.info("(create)application: {}, profile: {}", request.getApplication(), request.getProfile());
-    var properties = new Properties();
-    properties = service.create(request);
-    return properties;
+    log.info("(create)request: {}", request);
+    return service.create(request);
   }
 
+  /**
+   * Display config information
+   * @param application - application for client
+   * @param profile - profile for client
+   * @param label - label for client
+   * @return - Config information
+   */
   @Override
-  public PropertiesResponse getApplicationConfig(String application, String profile) {
-    log.info("(getApplicationConfig) application: {}, profile: {}", application, profile);
+  public PropertiesResponse getApplicationConfig(String application, String profile, String label) {
+    log.info("(getApplicationConfig) application: {}, profile: {}, label: {}", application, profile, label);
     var response = new PropertiesResponse();
-    response.setName(application);
+    response.setApplication(application);
     response.setProfile(List.of(profile));
-    response.setProperty(getPropertySource(application,profile));
+    response.setLabel(label);
+    response.setProperty(getPropertySource(application, profile, label));
     return response;
   }
 
-  private List<PropertySourcesResponse> getPropertySource(String application, String profile) {
+  /**
+   * Show propertySources
+   * @param application - application for client
+   * @param profile - profile for client
+   * @param label - label for client
+   * @return - Returns a list of client configs
+   */
+  private List<PropertySourcesResponse> getPropertySource(String application, String profile, String label) {
     var configProperty = new PropertySourcesResponse();
-    configProperty.setName(application);
-    configProperty.setSource(getSources(application, profile));
+    configProperty.setName("classpath:/api/v1/properties/" + application + "/" + profile + "/" + label);
+    configProperty.setSource(getSources(application, profile, label));
     return List.of(configProperty);
   }
 
-  private Map<String, String> getSources(String application, String profile) {
+  /**
+   * Show client configs
+   * @param application - application for client
+   * @param profile - profile for client
+   * @param label - label for client
+   * @return - client configs
+   */
+  private Map<String, String> getSources(String application, String profile, String label) {
     var configSource = new HashMap<String, String>();
-    service.configInformation(application, profile)
+    service.configInformation(application, profile, label)
        .forEach(property -> configSource.put(property.getKey(), property.getValue()));
     return configSource;
   }

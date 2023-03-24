@@ -25,18 +25,18 @@ public class PropertiesController {
 
   @PostMapping()
   public Properties create(@RequestBody PropertiesRequest request) {
-    log.info("(getApplicationConfiguration)application: {}, profile: {}", request.getApplication(),
-        request.getProfile());
+    log.info("(create)request: {}", request);
     return propertiesFacade.create(request);
   }
 
-  @GetMapping("/{application}/{profile}")
+  @GetMapping("/{application}/{profile}/{label}")
   public PropertiesResponse getApplicationConfiguration(
       @PathVariable("application") String application,
-      @PathVariable("profile") String profile
+      @PathVariable("profile") String profile,
+      @PathVariable("label") String label
   ) {
-    log.info("(getApplicationConfiguration)application: {}, profile: {}", application, profile);
-    return propertiesFacade.getApplicationConfig(application, profile);
+    log.info("(getApplicationConfiguration)application: {}, profile: {}, label: {}", application, profile, label);
+    return propertiesFacade.getApplicationConfig(application, profile, label);
   }
 
 }
