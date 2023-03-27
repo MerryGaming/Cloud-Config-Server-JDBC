@@ -8,7 +8,6 @@ import org.aibles.configserver.entity.Properties;
 @NoArgsConstructor
 public class PropertiesRequest {
 
-  //private long id;
   private String application;
 
   private String profile;
@@ -21,7 +20,6 @@ public class PropertiesRequest {
 
   public Properties toProperties() {
     Properties properties = new Properties();
-    //properties.setId(this.getId());
     properties.setApplication(this.getApplication());
     properties.setProfile(this.getProfile());
     properties.setLabel(this.getLabel());
