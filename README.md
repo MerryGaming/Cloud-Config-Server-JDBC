@@ -53,4 +53,5 @@
 ![image](https://user-images.githubusercontent.com/103310499/227949113-5664390f-33d4-4d5a-9d3f-0259cf992f7a.png)
 
 - Sau đó chúng ta sẽ config như sau:
+
 ![image](https://user-images.githubusercontent.com/103310499/227949233-2de62b5f-ba8a-4f10-8eb4-1ddfbf14bb1d.png)
