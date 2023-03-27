@@ -48,6 +48,9 @@
 - Hiện tại mình đang làm theo phương pháp lưu theo JDBC vậy nên chúng ta đầu tiên sẽ phải config nó với phía Database
 - Sau đó chúng ta sẽ có config với câu Query như trên để khi phía Client gọi tới server theo Application, Profile, Label thì server sẽ trả cho phía Client config mà họ đã lưu với server.
 
+
+
+
 - Để phía Client có thể lấy được thông tin ở server, đầu tiên ta phải thêm dependency cho Client
 ![image](https://user-images.githubusercontent.com/103310499/227949026-3dd71c9f-9767-46f5-84e8-0ae2588f22d1.png)
 ![image](https://user-images.githubusercontent.com/103310499/227949113-5664390f-33d4-4d5a-9d3f-0259cf992f7a.png)
