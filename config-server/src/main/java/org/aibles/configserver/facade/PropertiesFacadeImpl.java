@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
-import org.aibles.configserver.dto.request.PropertiesRequest;
+import org.aibles.configserver.dto.request.PropertiesCreateRequest;
+import org.aibles.configserver.dto.request.PropertiesUpdateRequest;
 import org.aibles.configserver.dto.response.PropertiesResponse;
 import org.aibles.configserver.dto.response.PropertySourcesResponse;
 import org.aibles.configserver.entity.Properties;
@@ -25,7 +26,7 @@ public class PropertiesFacadeImpl implements PropertiesFacade{
    * @return - client information
    */
   @Override
-  public Properties create(PropertiesRequest request) {
+  public Properties create(PropertiesCreateRequest request) {
     log.info("(create)request: {}", request);
     return service.create(request);
   }
@@ -46,6 +47,18 @@ public class PropertiesFacadeImpl implements PropertiesFacade{
     response.setLabel(label);
     response.setProperty(getPropertySource(application, profile, label));
     return response;
+  }
+
+  /**
+   * Update client information
+   * @param id - id config client want to update
+   * @param request- client information want to update
+   * @return - client information
+   */
+  @Override
+  public Properties update(String id, PropertiesUpdateRequest request) {
+    log.info("()id: {}, application: {}, profile: {}", id, request.getApplication(), request.getProfile());
+    return service.update(id, request);
   }
 
   /**

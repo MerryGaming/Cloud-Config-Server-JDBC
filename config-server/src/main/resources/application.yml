@@ -2,9 +2,8 @@ spring:
   liquibase:
     change-log: classpath:/migration/master-changelog.xml
   datasource:
-    url: jdbc:mysql://localhost:3306/config
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
+    url: jdbc:postgresql://localhost:5432/cloud-config1
+    username: postgres
     password: linh2002
   profiles:
     active: jdbc
@@ -12,9 +11,9 @@ spring:
     config:
       server:
         jdbc:
-          sql: SELECT key, value FROM properties WHERE application=? AND profile=? AND label=?
+          sql: SELECT prop_key, value_config FROM data_cloud WHERE application=? AND profile_client=? AND label=?
           order: 0
   jpa:
     show-sql: true
 server:
-  port: 8088
+  port: 8888

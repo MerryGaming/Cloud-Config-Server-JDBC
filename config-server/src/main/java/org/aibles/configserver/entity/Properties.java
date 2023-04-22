@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "properties")
+@Table(name = "data_cloud")
 public class Properties {
 
   @Id

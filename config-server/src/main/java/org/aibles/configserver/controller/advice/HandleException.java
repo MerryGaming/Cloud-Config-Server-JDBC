@@ -4,8 +4,8 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
-import org.aibles.configserver.exception.ExceptionRequest;
-import org.aibles.configserver.exception.ExceptionResponse;
+import org.aibles.configserver.exception.BaseExceptionRequest;
+import org.aibles.configserver.exception.response.ExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class HandleException {
 
-  @ExceptionHandler(value = {ExceptionRequest.class})
-  public ResponseEntity<ExceptionResponse> baseExceptionHandler(ExceptionRequest error) {
+  @ExceptionHandler(value = {BaseExceptionRequest.class})
+  public ResponseEntity<ExceptionResponse> baseExceptionHandler(BaseExceptionRequest error) {
     log.error("(Exception) errorCode: {}", error.getCode());
     ExceptionResponse exceptionResponse = new ExceptionResponse();
     exceptionResponse.setError(error.getCode());
